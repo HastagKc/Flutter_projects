@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 class CommonElevated extends StatefulWidget {
   final btnText;
-  bool isIncrementDecrement;
-  int counter;
+  final VoidCallback onPressed;
+
   CommonElevated({
     super.key,
     required this.btnText,
-    required this.isIncrementDecrement,
-    required this.counter,
+    required this.onPressed,
   });
 
   @override
@@ -16,24 +15,10 @@ class CommonElevated extends StatefulWidget {
 }
 
 class _CommonElevatedState extends State<CommonElevated> {
-  void increment() {
-    setState(() {
-      widget.counter++;
-    });
-  }
-
-  void decrement() {
-    setState(() {
-      widget.counter--;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        widget.isIncrementDecrement ? increment() : decrement();
-      },
+      onPressed: widget.onPressed,
       child: Text(widget.btnText),
     );
   }
