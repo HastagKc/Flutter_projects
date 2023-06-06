@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Curd',
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
