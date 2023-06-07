@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/100days_flutter_app/curd_operation/linux"
+  "cmake.sourceDirectory": "D:/100days_flutter_app/curd_operation/linux",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

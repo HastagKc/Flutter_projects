@@ -1,4 +1,5 @@
-import 'package:curd_operation/home_page.dart';
+import 'package:curd_operation/curd_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Curd',
-      home: HomePage(),
+      // home: HomePage(),
+      home: CurdPage(),
     );
   }
 }
