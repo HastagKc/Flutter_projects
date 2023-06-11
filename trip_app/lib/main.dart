@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trip_app/SlideAnimationExample.dart';
 import 'package:trip_app/imageModel.dart';
 
 void main() {
@@ -10,9 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'Nunito'),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
+      // home: SlideAnimationExample(),
     );
   }
 }
@@ -27,7 +30,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
-
+  int totalPage = images.length;
   void _onScroll() {
     print('Kc');
   }
@@ -55,18 +58,26 @@ class _HomePageState extends State<HomePage>
           pageWidget(
             image: images[0].imageUrl,
             imageTitle: images[0].imageName,
+            imageDis: images[0].imageDis,
+            page: '1',
           ),
           pageWidget(
             image: images[1].imageUrl,
             imageTitle: images[1].imageName,
+            imageDis: images[1].imageDis,
+            page: '2',
           ),
           pageWidget(
             image: images[2].imageUrl,
             imageTitle: images[2].imageName,
+            imageDis: images[2].imageDis,
+            page: '3',
           ),
           pageWidget(
             image: images[3].imageUrl,
             imageTitle: images[3].imageName,
+            imageDis: images[3].imageDis,
+            page: '4',
           ),
         ],
       ),
@@ -76,6 +87,8 @@ class _HomePageState extends State<HomePage>
   Widget pageWidget({
     required image,
     required imageTitle,
+    required imageDis,
+    required page,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -101,14 +114,14 @@ class _HomePageState extends State<HomePage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 30.0),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.alphabetic,
                 children: [
                   Text(
-                    '1',
-                    style: TextStyle(
+                    page,
+                    style: const TextStyle(
                       fontSize: 30.0,
                       color: Colors.white,
                     ),
@@ -127,12 +140,14 @@ class _HomePageState extends State<HomePage>
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      imageTitle,
-                      style: const TextStyle(
-                        fontSize: 40.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    SlideAnimationExample(
+                      widgetChild: Text(
+                        imageTitle,
+                        style: const TextStyle(
+                          fontSize: 40.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5.0),
@@ -159,7 +174,48 @@ class _HomePageState extends State<HomePage>
                           icon: Icons.star,
                           color: Colors.grey,
                         ),
+                        const SizedBox(width: 10.0),
+                        Text(
+                          totalPage.toString(),
+                          style: const TextStyle(
+                            color: Colors.white38,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                        const Text(
+                          '(2300)',
+                          style: TextStyle(
+                            color: Colors.white38,
+                            fontSize: 11.0,
+                          ),
+                        ),
                       ],
+                    ),
+
+                    // !discription
+                    Padding(
+                      padding: const EdgeInsets.only(right: 50.0),
+                      child: Text(
+                        imageDis,
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.7),
+                          height: 1.5,
+                          fontSize: 16.0,
+                        ),
+                        maxLines: 5,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+
+                    const SizedBox(height: 10.0),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Read More',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -175,7 +231,7 @@ class _HomePageState extends State<HomePage>
 class CustomeIcon extends StatelessWidget {
   final IconData icon;
   final Color color;
-  CustomeIcon({
+  const CustomeIcon({
     super.key,
     required this.icon,
     required this.color,
@@ -186,6 +242,7 @@ class CustomeIcon extends StatelessWidget {
     return Icon(
       icon,
       color: color,
+      size: 15.0,
     );
   }
 }
