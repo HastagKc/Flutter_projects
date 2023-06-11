@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trip_app/SlideAnimationExample.dart';
+import 'package:trip_app/fade_in_animation.dart';
 import 'package:trip_app/imageModel.dart';
+import 'package:trip_app/slide_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -140,7 +141,8 @@ class _HomePageState extends State<HomePage>
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SlideAnimationExample(
+                    SlideAnimation(
+                      duration: const Duration(milliseconds: 850),
                       widgetChild: Text(
                         imageTitle,
                         style: const TextStyle(
@@ -151,71 +153,82 @@ class _HomePageState extends State<HomePage>
                       ),
                     ),
                     const SizedBox(height: 5.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CustomeIcon(
-                          icon: Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        CustomeIcon(
-                          icon: Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        CustomeIcon(
-                          icon: Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        CustomeIcon(
-                          icon: Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        CustomeIcon(
-                          icon: Icons.star,
-                          color: Colors.grey,
-                        ),
-                        const SizedBox(width: 10.0),
-                        Text(
-                          totalPage.toString(),
-                          style: const TextStyle(
-                            color: Colors.white38,
-                            fontSize: 15.0,
+                    SlideAnimation(
+                      widgetChild: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          CustomeIcon(
+                            icon: Icons.star,
+                            color: Colors.yellow,
                           ),
-                        ),
-                        const Text(
-                          '(2300)',
-                          style: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 11.0,
+                          CustomeIcon(
+                            icon: Icons.star,
+                            color: Colors.yellow,
                           ),
-                        ),
-                      ],
-                    ),
-
-                    // !discription
-                    Padding(
-                      padding: const EdgeInsets.only(right: 50.0),
-                      child: Text(
-                        imageDis,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
-                          height: 1.5,
-                          fontSize: 16.0,
-                        ),
-                        maxLines: 5,
-                        textAlign: TextAlign.justify,
+                          CustomeIcon(
+                            icon: Icons.star,
+                            color: Colors.yellow,
+                          ),
+                          CustomeIcon(
+                            icon: Icons.star,
+                            color: Colors.yellow,
+                          ),
+                          CustomeIcon(
+                            icon: Icons.star,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(width: 10.0),
+                          Text(
+                            totalPage.toString(),
+                            style: const TextStyle(
+                              color: Colors.white38,
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          const Text(
+                            '(2300)',
+                            style: TextStyle(
+                              color: Colors.white38,
+                              fontSize: 11.0,
+                            ),
+                          ),
+                        ],
                       ),
+                      duration: const Duration(
+                        milliseconds: 950,
+                      ),
+                    ),
+                    // !discription
+                    FadeInAnimation(
+                      widgetChild: Padding(
+                        padding: const EdgeInsets.only(right: 50.0),
+                        child: Text(
+                          imageDis,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.7),
+                            height: 1.5,
+                            fontSize: 16.0,
+                          ),
+                          maxLines: 5,
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                      duration: const Duration(milliseconds: 800),
                     ),
 
                     const SizedBox(height: 10.0),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Read More',
-                        style: TextStyle(
-                          color: Colors.white,
+
+                    FadeInAnimation(
+                      widgetChild: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Read More',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
+                      duration: const Duration(milliseconds: 900),
                     ),
                   ],
                 ),

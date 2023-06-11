@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:trip_app/main.dart';
 
-class SlideAnimationExample extends StatefulWidget {
+class SlideAnimation extends StatefulWidget {
   final Widget widgetChild;
-  SlideAnimationExample({required this.widgetChild});
+  final Duration duration;
+  SlideAnimation({
+    required this.widgetChild,
+    required this.duration,
+  });
 
   @override
-  _SlideAnimationExampleState createState() => _SlideAnimationExampleState();
+  State<SlideAnimation> createState() => _SlideAnimationState();
 }
 
-class _SlideAnimationExampleState extends State<SlideAnimationExample>
+class _SlideAnimationState extends State<SlideAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
@@ -19,7 +22,7 @@ class _SlideAnimationExampleState extends State<SlideAnimationExample>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: widget.duration,
     );
 
     _animation = Tween<Offset>(
@@ -27,7 +30,7 @@ class _SlideAnimationExampleState extends State<SlideAnimationExample>
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeOut,
+      curve: Curves.easeInOut,
     ));
 
     _controller.forward();
