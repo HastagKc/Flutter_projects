@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hero_animation_app/model/imageModel.dart';
 import 'package:hero_animation_app/screens/second_page.dart';
 
-class FirstScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +25,7 @@ class FirstScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => DetailPage(
                       item: item.imageUrl,
+                      imageIndex: index,
                       heroTag: heroTag,
                     ),
                   ),
@@ -49,18 +51,19 @@ class FirstScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CircleAvatar(
-                          backgroundColor: Color.fromARGB(255, 241, 234, 234),
+                          backgroundColor:
+                              const Color.fromARGB(255, 241, 234, 234),
                           child: Text(
                             item.imageId,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 22.0,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ),
                         Text(
                           item.imageName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 22.0,
                             color: Colors.white,
                           ),
