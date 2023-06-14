@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world_app/home_page.dart';
+import 'package:hello_world_app/dice_page.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      // home: HomePage(),
+      home: DicePage(),
     );
   }
 }
