@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hero_animation_app/model/imageModel.dart';
+import 'package:hero_animation_app/screens/customWidegts.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final String item;
   final int imageIndex;
   final String heroTag;
@@ -13,11 +14,24 @@ class DetailPage extends StatelessWidget {
   });
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  String selectedSize = '';
+
+  void _selectSize(String size) {
+    setState(() {
+      selectedSize = size;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Hero(
-        tag: '$heroTag',
+        tag: '${widget.heroTag}',
         child: Container(
           height: double.infinity,
           width: double.infinity,
@@ -25,7 +39,7 @@ class DetailPage extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               Image.network(
-                item,
+                widget.item,
                 fit: BoxFit.cover,
               ),
               DraggableScrollableSheet(
@@ -53,13 +67,15 @@ class DetailPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                costumText(
-                                  textTitle: imagesList[imageIndex].imageDes,
+                                CustomWidgets().costumText(
+                                  textTitle:
+                                      imagesList[widget.imageIndex].imageDes,
                                   fontSize: 24.0,
                                   isBold: true,
                                 ),
-                                costumText(
-                                  textTitle: imagesList[imageIndex].price,
+                                CustomWidgets().costumText(
+                                  textTitle:
+                                      imagesList[widget.imageIndex].price,
                                   fontSize: 24.0,
                                   isBold: true,
                                   color: Colors.grey,
@@ -67,30 +83,29 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 10.0),
-                            costumText(
-                              textTitle: imagesList[imageIndex].category,
+                            CustomWidgets().costumText(
+                              textTitle: imagesList[widget.imageIndex].category,
                               fontSize: 18,
                               isBold: false,
                               color: Colors.grey,
                             ),
                             const SizedBox(height: 10.0),
-                            costumText(
-                              textTitle: imagesList[imageIndex].rating,
+                            CustomWidgets().costumText(
+                              textTitle: imagesList[widget.imageIndex].rating,
                               fontSize: 18,
                               isBold: false,
                               color: Colors.grey,
                             ),
                             const SizedBox(height: 18.0),
-                            costumText(
+                            CustomWidgets().costumText(
                               textTitle: 'Choose Size',
                               fontSize: 16.0,
                               isBold: false,
                             ),
+                            const SizedBox(height: 10.0),
                             Row(
                               children: [
-                                CustomCircularAvtar(text: 'S'),
-                                CustomCircularAvtar(text: 'M'),
-                                CustomCircularAvtar(text: 'L'),
+                                shoeSizedBox(),
                               ],
                             ),
                           ],
@@ -107,51 +122,77 @@ class DetailPage extends StatelessWidget {
     );
   }
 
-  Widget costumText({
-    required String textTitle,
-    required double fontSize,
-    required bool isBold,
-    Color color = Colors.black,
-  }) {
-    return Text(
-      textTitle,
-      style: TextStyle(
-        fontSize: fontSize,
-        fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-        color: color,
-      ),
-    );
-  }
-
-  Widget CustomCircularAvtar({required String text}) {
-    return InkWell(
-      onDoubleTap: () {},
-      child: Container(
-        width: 50.0,
-        height: 80.0,
-        // color: Colors.green,
-        child: Column(
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.green,
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                ),
+  Widget shoeSizedBox() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () => _selectSize('Small'),
+          child: Container(
+            // margin: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: 'Small' == selectedSize
+                  ? const Color.fromARGB(255, 248, 202, 202)
+                  : Colors.transparent,
+            ),
+            child: Text(
+              'Small',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: 'Small' == selectedSize ? Colors.white : Colors.black,
+                decoration: TextDecoration.none,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: costumText(
-                textTitle: text,
-                fontSize: 16.0,
-                isBold: true,
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        GestureDetector(
+          onTap: () => _selectSize('Medium'),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: 'Medium' == selectedSize
+                  ? const Color.fromARGB(255, 248, 202, 202)
+                  : Colors.transparent,
+            ),
+            child: Text(
+              'Medium',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: 'Medium' == selectedSize ? Colors.white : Colors.black,
+                decoration: TextDecoration.none,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () => _selectSize('Large'),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: 'Large' == selectedSize
+                  ? const Color.fromARGB(255, 248, 202, 202)
+                  : Colors.transparent,
+            ),
+            child: Text(
+              'Large',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: 'Large' == selectedSize ? Colors.white : Colors.black,
+                decoration: TextDecoration.none,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
