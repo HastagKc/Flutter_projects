@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         child: ListView.builder(
           itemCount: imagesList.length,
           itemBuilder: (BuildContext context, int index) {
-            final item = imagesList[index];
+            final shoe = imagesList[index];
             const heroTag = 'shoesListBuilderTag';
             return GestureDetector(
               onTap: () {
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => DetailPage(
-                      item: item.imageUrl,
+                      item: shoe.imageUrl,
                       imageIndex: index,
                       heroTag: heroTag,
                     ),
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        item.imageUrl,
+                        shoe.imageUrl,
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                           backgroundColor:
                               const Color.fromARGB(255, 241, 234, 234),
                           child: Text(
-                            item.imageId,
+                            shoe.imageId,
                             style: const TextStyle(
                               fontSize: 22.0,
                               color: Colors.black,
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          item.imageName,
+                          shoe.imageName,
                           style: const TextStyle(
                             fontSize: 22.0,
                             color: Colors.white,

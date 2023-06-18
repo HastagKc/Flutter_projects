@@ -55,61 +55,57 @@ class _DetailPageState extends State<DetailPage> {
                       topLeft: Radius.circular(10.0),
                       topRight: Radius.circular(10.0),
                     ),
-                    child: SingleChildScrollView(
-                      controller: scrollController,
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        color: Colors.white,
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        child: ListView(
-                          controller: scrollController,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CustomWidgets().costumText(
-                                  textTitle:
-                                      imagesList[widget.imageIndex].imageDes,
-                                  fontSize: 24.0,
-                                  isBold: true,
-                                ),
-                                CustomWidgets().costumText(
-                                  textTitle:
-                                      imagesList[widget.imageIndex].price,
-                                  fontSize: 24.0,
-                                  isBold: true,
-                                  color: Colors.grey,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10.0),
-                            CustomWidgets().costumText(
-                              textTitle: imagesList[widget.imageIndex].category,
-                              fontSize: 18,
-                              isBold: false,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(height: 10.0),
-                            CustomWidgets().costumText(
-                              textTitle: imagesList[widget.imageIndex].rating,
-                              fontSize: 18,
-                              isBold: false,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(height: 18.0),
-                            CustomWidgets().costumText(
-                              textTitle: 'Choose Size',
-                              fontSize: 16.0,
-                              isBold: false,
-                            ),
-                            const SizedBox(height: 10.0),
-                            Row(
-                              children: [
-                                shoeSizedBox(),
-                              ],
-                            ),
-                          ],
-                        ),
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      color: Colors.white,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: ListView(
+                        controller: scrollController,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomWidgets().costumText(
+                                textTitle:
+                                    imagesList[widget.imageIndex].imageDes,
+                                fontSize: 24.0,
+                                isBold: true,
+                              ),
+                              CustomWidgets().costumText(
+                                textTitle: imagesList[widget.imageIndex].price,
+                                fontSize: 24.0,
+                                isBold: true,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10.0),
+                          CustomWidgets().costumText(
+                            textTitle: imagesList[widget.imageIndex].category,
+                            fontSize: 18,
+                            isBold: false,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(height: 10.0),
+                          CustomWidgets().costumText(
+                            textTitle: imagesList[widget.imageIndex].rating,
+                            fontSize: 18,
+                            isBold: false,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(height: 18.0),
+                          CustomWidgets().costumText(
+                            textTitle: 'Choose Size',
+                            fontSize: 16.0,
+                            isBold: false,
+                          ),
+                          const SizedBox(height: 10.0),
+                          Row(
+                            children: [
+                              shoeSizedBox(),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );
