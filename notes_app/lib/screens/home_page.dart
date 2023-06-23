@@ -3,6 +3,7 @@ import 'package:notes_app/common_widgets/custom_elevetedbtn.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/screens/details_page.dart';
 import 'package:notes_app/screens/drop_page.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -97,13 +98,17 @@ class HomePage extends StatelessWidget {
                   return Expanded(
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
+                        /*   Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
                               return DetailsPage(note: note[index]);
                             },
                           ),
+                        ); */
+                        Get.to(
+                          DetailsPage(note: note[index]),
+                          transition: Transition.fadeIn,
                         );
                       },
                       child: Container(
