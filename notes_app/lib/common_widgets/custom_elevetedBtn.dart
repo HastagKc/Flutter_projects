@@ -1,9 +1,10 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 class CustomElevatedBtn extends StatefulWidget {
   final List<String> btnList;
 
- const  CustomElevatedBtn({Key? key, required this.btnList}) : super(key: key);
+  const CustomElevatedBtn({Key? key, required this.btnList}) : super(key: key);
 
   @override
   State<CustomElevatedBtn> createState() => _CustomElevatedBtnState();
@@ -16,12 +17,14 @@ class _CustomElevatedBtnState extends State<CustomElevatedBtn> {
   void initState() {
     super.initState();
     isClickedList = List.generate(widget.btnList.length, (index) => false);
+    isClickedList[0] == true;
+
+
   }
 
   void updateClickedState(int index) {
     setState(() {
       for (int i = 0; i < isClickedList.length; i++) {
-        isClickedList[0] == true;
         if (i == index) {
           isClickedList[i] = true;
         } else {
