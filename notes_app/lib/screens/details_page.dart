@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:notes_app/model/notes_model.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -14,7 +15,9 @@ class DetailsPage extends StatelessWidget {
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            // Navigator.pop(context);
+
+            Get.back();
           },
           icon: const Icon(
             Icons.arrow_back,

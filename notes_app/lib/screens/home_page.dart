@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                         ); */
                         Get.to(
                           DetailsPage(note: note[index]),
-                          transition: Transition.fadeIn,
+                          transition: Transition.fade,
                         );
                       },
                       child: Container(
