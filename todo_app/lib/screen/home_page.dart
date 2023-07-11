@@ -14,7 +14,22 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.deepOrange,
+              ),
               child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Todo List'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
@@ -29,7 +44,45 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Add Todo'),
+                  content: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 200,
+                    child: Column(
+                      children: [
+                        const TextField(
+                          decoration: InputDecoration(
+                            label: Text('Todo Task'),
+                          ),
+                        ),
+                        const TextField(
+                          decoration: InputDecoration(
+                            label: Text('Datetime'),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Cancel')),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Add')),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              });
+        },
         child: const Icon(Icons.add),
       ),
       body: Container(
