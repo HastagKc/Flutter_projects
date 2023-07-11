@@ -11,16 +11,4 @@ class TodoModel {
 List<TodoModel> todos = [
   TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
   TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
-  TodoModel(dataTime: DateTime.now(), task: 'Read Books'),
 ];

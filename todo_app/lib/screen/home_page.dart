@@ -60,10 +60,33 @@ class HomePage extends StatelessWidget {
                             label: Text('Todo Task'),
                           ),
                         ),
-                        const TextField(
-                          decoration: InputDecoration(
-                            label: Text('Datetime'),
-                          ),
+                        Row(
+                          children: [
+                            const Expanded(
+                              flex: 7,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  label: Text('Datetime'),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: IconButton(
+                                onPressed: () async {
+                                  TimeOfDay? pickedTime = await showTimePicker(
+                                    context: context,
+                                    initialTime: TimeOfDay.now(),
+                                    initialEntryMode: TimePickerEntryMode.dial,
+                                  );
+                                  if (pickedTime != null) {
+                                    print(pickedTime);
+                                  }
+                                },
+                                icon: const Icon(Icons.alarm_add),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: 20.0,
@@ -72,9 +95,14 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ElevatedButton(
-                                onPressed: () {}, child: const Text('Cancel')),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Cancel')),
                             ElevatedButton(
-                                onPressed: () {}, child: const Text('Add')),
+                              onPressed: () {},
+                              child: const Text('Add'),
+                            ),
                           ],
                         ),
                       ],
